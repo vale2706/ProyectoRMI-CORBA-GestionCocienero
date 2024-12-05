@@ -17,10 +17,10 @@ public class ServidorDeObjetos
         int numPuertoRMIRegistryServidorDisplay = 0;
         String direccionIpRMIRegistryServidorDisplay = "";
         
-        System.out.println("Cual es el la dirección ip donde se encuentra el rmiRegistry del servidor display");
+        System.out.println("Cual es el la direccion ip donde se encuentra el rmiRegistry del servidor display");
         direccionIpRMIRegistryServidorDisplay = UtilidadesConsola.leerCadena();
         
-        System.out.println("Cual es el número de puerto por el cual escucha el rmiRegistry del servidor display");
+        System.out.println("Cual es el numero de puerto por el cual escucha el rmiRegistry del servidor display");
         numPuertoRMIRegistryServidorDisplay = UtilidadesConsola.leerEntero();
         
         ControladorDisplayImpl objRemoto= new ControladorDisplayImpl();

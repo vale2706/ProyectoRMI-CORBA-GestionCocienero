@@ -36,7 +36,7 @@ public class GenerarTurnoRepositoryImpl implements GenerarTurnoRepositoryInt {
     private int consultarNumeroCocineroDiponible() {
         int posicion = -1;
         for (int i = 0; i < 3; i++) {
-            if (this.vectorCocineros[i].isOcupado() == false) {
+            if (this.vectorCocineros[i].isOcupado() == true) {
                 posicion = i;
                 break;
             }
