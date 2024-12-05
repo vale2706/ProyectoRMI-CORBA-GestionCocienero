@@ -14,6 +14,7 @@ import servidor.controladores.ControladorGeneradorTurnoImpl;
 import servidor.utilidades.UtilidadesRegistroC;
 import servidor.controladores.ControladorGestionPedidoInt;
 import servidor.controladores.ControladorGestionPedidoImpl;
+import servidor.controladores.ControladorRegistroReferenciaCocineroImpl;
 
 
 public class ServidorDeObjetos {
@@ -40,7 +41,8 @@ public class ServidorDeObjetos {
         numPuertoRMIRegistryCocinero = UtilidadesConsola.leerEntero();
 
         ControladorDisplayInt objRemotoDisplay = (ControladorDisplayInt) UtilidadesRegistroC.obtenerObjRemoto(direccionIpRMIRegistryDisplay, numPuertoRMIRegistryDisplay, "controladorDisplay");
-
+        ControladorRegistroReferenciaCocineroImpl objRepositorio1 = new ControladorRegistroReferenciaCocineroImpl();
+                
         GenerarTurnoRepositoryImpl objRepositorio = new GenerarTurnoRepositoryImpl(objRemotoDisplay);
         ControladorGeneradorTurnoImpl objRemoto = new ControladorGeneradorTurnoImpl(objRepositorio);//se leasigna el puerto de escucha del objeto remoto
         ControladorGestionPedidoInt objRemotoCocinero = new ControladorGestionPedidoImpl(objRepositorio);

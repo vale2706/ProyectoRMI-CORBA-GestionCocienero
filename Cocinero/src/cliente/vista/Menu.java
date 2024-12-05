@@ -17,9 +17,11 @@ public class Menu {
     private final ControladorGestionPedidoInt objRemoto;
     private String usuario;
     private String contrasenia;
+    private final int noCocinero;
 
-    public Menu(ControladorGestionPedidoInt objRemoto) {
+    public Menu(ControladorGestionPedidoInt objRemoto, int noCocinero) {
         this.objRemoto = objRemoto;
+        this.noCocinero= noCocinero;
     }
 
     public void ejecutarMenuPrincipal() {
