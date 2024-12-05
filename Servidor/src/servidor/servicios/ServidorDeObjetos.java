@@ -9,12 +9,12 @@ import servidor.utilidades.UtilidadesRegistroS;
 import servidor.utilidades.UtilidadesConsola;
 import java.rmi.RemoteException;
 import servidor.Repositorios.GenerarTurnoRepositoryImpl;
+import servidor.Repositorios.GestionPedidoRepositoryImpl;
 import servidor.controladores.ControladorDisplayInt;
 import servidor.controladores.ControladorGeneradorTurnoImpl;
 import servidor.utilidades.UtilidadesRegistroC;
 import servidor.controladores.ControladorGestionPedidoInt;
 import servidor.controladores.ControladorGestionPedidoImpl;
-import servidor.controladores.ControladorRegistroReferenciaCocineroImpl;
 
 
 public class ServidorDeObjetos {
@@ -27,9 +27,9 @@ public class ServidorDeObjetos {
         int numPuertoRMIRegistryCocinero = 0;
         String direccionIpRMIRegistryCocinero = "";
 
-        System.out.println("Cual es el la direccion ip donde se encuentra  el rmiRegistry de asignacion de cliente ");
+        System.out.println("Cual es el la direccion ip donde se encuentra  el rmiRegistry de asignacion de cocineros ");
         direccionIpRMIRegistry = UtilidadesConsola.leerCadena();
-        System.out.println("Cual es el numero de puerto por el cual escucha el rmiRegistry  de asignacion de cliente");
+        System.out.println("Cual es el numero de puerto por el cual escucha el rmiRegistry  de asignacion de cocineros");
         numPuertoRMIRegistry = UtilidadesConsola.leerEntero();
         System.out.println("Cual es la direccion ip donde se encuentra el rmiRegistry del servidor display");
         direccionIpRMIRegistryDisplay = UtilidadesConsola.leerCadena();
@@ -41,11 +41,11 @@ public class ServidorDeObjetos {
         numPuertoRMIRegistryCocinero = UtilidadesConsola.leerEntero();
 
         ControladorDisplayInt objRemotoDisplay = (ControladorDisplayInt) UtilidadesRegistroC.obtenerObjRemoto(direccionIpRMIRegistryDisplay, numPuertoRMIRegistryDisplay, "controladorDisplay");
-        ControladorRegistroReferenciaCocineroImpl objRemoto1 = new ControladorRegistroReferenciaCocineroImpl();
-                
+
         GenerarTurnoRepositoryImpl objRepositorio = new GenerarTurnoRepositoryImpl(objRemotoDisplay);
+        GestionPedidoRepositoryImpl objRepositorio2= new GestionPedidoRepositoryImpl(objRemotoDisplay);
         ControladorGeneradorTurnoImpl objRemoto = new ControladorGeneradorTurnoImpl(objRepositorio);//se leasigna el puerto de escucha del objeto remoto
-        ControladorGestionPedidoInt objRemotoCocinero = new ControladorGestionPedidoImpl(objRepositorio);
+        ControladorGestionPedidoInt objRemotoCocinero = new ControladorGestionPedidoImpl(objRepositorio2,objRepositorio);
         try {
             UtilidadesRegistroS.arrancarNS(numPuertoRMIRegistry);
             UtilidadesRegistroS.RegistrarObjetoRemoto(objRemoto,
@@ -57,12 +57,6 @@ public class ServidorDeObjetos {
                     direccionIpRMIRegistryCocinero,
                     numPuertoRMIRegistryCocinero,
                     "controladorGestionPedido");
-            
-            UtilidadesRegistroS.arrancarNS(numPuertoRMIRegistryCocinero);
-            UtilidadesRegistroS.RegistrarObjetoRemoto(objRemoto1,
-                    direccionIpRMIRegistryCocinero,
-                    numPuertoRMIRegistryCocinero,
-                    "controladorRegistroReferenciaCocinero");
         } catch (Exception e) {
             System.err.println("No fue posible Arrancar el NS o Registrar el objeto remoto" + e.getMessage());
         }

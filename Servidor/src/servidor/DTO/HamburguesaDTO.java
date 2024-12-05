@@ -47,8 +47,4 @@ public class HamburguesaDTO implements Serializable
     public void setTipoHamburguesa(int tipoHamburguesa) {
         this.tipoHamburguesa = tipoHamburguesa;
     }
-
-    
-    
-
 }

@@ -77,41 +77,11 @@ public class Menu {
 
     private void Opcion2() {
         try {
-            String[] vector = new String[4];
-            vector[0] = "-ORBInitialHost"; 
-            vector[1] = "localhost";       
-            vector[2] = "-ORBInitialPort"; 
-            vector[3] = "2022";            
-
-            System.out.println("Ingrese su nombre: ");
-            String usuario = UtilidadesConsola.leerCadena();
-
-            ORB orb = ORB.init(vector, null); 
-
-            POA rootpoa = POAHelper.narrow(orb.resolve_initial_references("RootPOA"));
-            rootpoa.the_POAManager().activate();
-
-            org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
-            NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
-
-            String name = "ServidorChat"; // 
-            ServidorInt svrchat = ServidorIntHelper.narrow(ncRef.resolve_str(name));
-
-            GUIClienteChat objGUICliente = new GUIClienteChat(svrchat, usuario);
-            ClienteImpl clienteCallbackImpl = new ClienteImpl(objGUICliente);
-
-            org.omg.CORBA.Object ref = rootpoa.servant_to_reference(clienteCallbackImpl);
-            ClienteInt objcllbck = ClienteIntHelper.narrow(ref);
-
-            objGUICliente.asociarObjetoRemoto(objcllbck);
-            objGUICliente.setVisible(true);
-
-            svrchat.registrarCliente(objcllbck, usuario);  // Registrar el cliente en el servidor de chat
-            objGUICliente.setVisible(true);
+            GUIConexion vtnConexion = new GUIConexion();
+            vtnConexion.setVisible(true);
         } catch (Exception e) {
-            System.out.println("ERROR : " + e);
-            e.printStackTrace(System.out);
+            System.out.println("La operacion no se pudo completar, intente nuevamente...");
+            System.out.println("Excepcion generada: " + e.getMessage());
         }
-
     }
 }

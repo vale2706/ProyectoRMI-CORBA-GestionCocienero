@@ -7,6 +7,7 @@ package servidor.controladores;
 import java.rmi.server.UnicastRemoteObject;
 import java.rmi.RemoteException;
 import servidor.Repositorios.GenerarTurnoRepositoryInt;
+import servidor.Repositorios.GestionPedidoRepositoryInt;
 import servidor.controladores.ControladorGestionPedidoInt;
 
 /**
@@ -14,12 +15,14 @@ import servidor.controladores.ControladorGestionPedidoInt;
  * @author valer
  */
 public class ControladorGestionPedidoImpl extends UnicastRemoteObject implements ControladorGestionPedidoInt {
-    private final GenerarTurnoRepositoryInt objRemoto;
+    private final GestionPedidoRepositoryInt objRemoto;
+    private final GenerarTurnoRepositoryInt objRemoto2;
     
     
-    public ControladorGestionPedidoImpl(GenerarTurnoRepositoryInt objRemoto) throws RemoteException{
+    public ControladorGestionPedidoImpl(GestionPedidoRepositoryInt objRemoto,GenerarTurnoRepositoryInt objRemoto2) throws RemoteException{
          super();
          this.objRemoto= objRemoto;
+         this.objRemoto2=objRemoto2;
     }  
     @Override
     public int iniciarSesion(String usuario, String contrasenia) throws RemoteException {
@@ -28,12 +31,12 @@ public class ControladorGestionPedidoImpl extends UnicastRemoteObject implements
 
     @Override
     public void cambiarEstadoOcupado(String usuario) throws RemoteException {
-        objRemoto.cambiarEstadoOcupado(usuario);
+        objRemoto2.cambiarEstadoOcupado(usuario);
     }
 
     @Override
     public void cambiarEstadoLibre(String usuario) throws RemoteException {
-        objRemoto.cambiarEstadoLibre(usuario);
+        objRemoto2.cambiarEstadoLibre(usuario);
     }
       
 }

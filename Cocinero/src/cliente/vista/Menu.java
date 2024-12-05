@@ -15,13 +15,11 @@ import cliente.utilidades.UtilidadesConsola;
 public class Menu {
 
     private final ControladorGestionPedidoInt objRemoto;
-    private String usuario;
+    private String usuario;///CAMBIAR
     private String contrasenia;
-    private final int noCocinero;
 
-    public Menu(ControladorGestionPedidoInt objRemoto, int noCocinero) {
+    public Menu(ControladorGestionPedidoInt objRemoto) {
         this.objRemoto = objRemoto;
-        this.noCocinero= noCocinero;
     }
 
     public void ejecutarMenuPrincipal() {
@@ -63,7 +61,7 @@ public class Menu {
             System.out.println("La operación no se pudo completar, intente nuevamente...");
         }
     }
-    private void solicitarDatos() {
+    private void solicitarDatos() { ///CAMBIAR
         boolean validacionDatos;
         do {
             System.out.println("Ingrese Usuario: ");
@@ -84,7 +82,8 @@ public class Menu {
                 System.out.println("========= Actualizacion del Cocinero=========");
                 System.out.println("1. Cocinero Disponible");
                 System.out.println("2. Cocinero No Disponible");
-                System.out.println("3. Salir");
+                System.out.println("3. Resolver dudas a clientes");
+                System.out.println("4. Salir");
                 opcion = UtilidadesConsola.leerEntero();
                 switch (opcion) {
                     case 1:
@@ -95,6 +94,9 @@ public class Menu {
                         objRemoto.cambiarEstadoOcupado(usuario);
                         break;
                     case 3:
+                        chatClientes();
+                        break;
+                    case 4:
                         System.out.println("Saliendo...");
                         break;
                     default:
@@ -108,6 +110,14 @@ public class Menu {
         }
     }
 
+    private void chatClientes() {
+        try {
+            GUIConexion objGUIConexion = new GUIConexion();
+            objGUIConexion.setVisible(true);
+        } catch (Exception e) {
+            System.out.println("Error al abrir el chat de clientes: " + e.getMessage());
+        }
+    }
     private boolean validarLongitud(String texto, int min, int max) {
         return texto.length() >= min && texto.length() <= max;
     }
