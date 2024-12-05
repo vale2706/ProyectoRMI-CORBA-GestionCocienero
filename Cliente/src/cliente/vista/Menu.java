@@ -2,9 +2,17 @@ package cliente.vista;
 
 import cliente.utilidades.UtilidadesConsola;
 import java.rmi.RemoteException;
+import org.omg.CORBA.ORB;
+import org.omg.CosNaming.NamingContextExt;
+import org.omg.CosNaming.NamingContextExtHelper;
+import org.omg.PortableServer.POA;
+import org.omg.PortableServer.POAHelper;
 import servidor.DTO.HamburguesaDTO;
 import servidor.controladores.ControladorGeneradorTurnoInt;
-
+import sop_corba.ClienteInt;
+import sop_corba.ClienteIntHelper;
+import sop_corba.ServidorInt;
+import sop_corba.ServidorIntHelper;
 public class Menu {
     
     private final ControladorGeneradorTurnoInt objRemoto;
@@ -21,7 +29,8 @@ public class Menu {
         {
             System.out.println("==Menu==");
             System.out.println("1. Generar turno");
-            System.out.println("2. Salir");
+            System.out.println("2. Chat con el Cocinero");
+            System.out.println("3. Salir");
 
             opcion = UtilidadesConsola.leerEntero();
 
@@ -31,6 +40,9 @@ public class Menu {
                         Opcion1();
                         break;
                 case 2:
+                        Opcion2();
+                        break;
+                case 3:
                         System.out.println("Salir...");
                         break;
                 default:
@@ -49,7 +61,7 @@ public class Menu {
                 int noMesa = UtilidadesConsola.leerEntero();
                 System.out.println("Digite el nombre de la hamburguesa ");
                 String nombre = UtilidadesConsola.leerCadena();
-                System.out.println("Digite el tipo de Hamburguesa ");
+                System.out.println("Digite el tipo de Hamburguesa [1.Pequena,2.Mediana,3.Grande]");
                 int tipoHamburguesa = UtilidadesConsola.leerEntero();
                 System.out.println("Digite la cantidad de ingredientes extra ");
                 int cantidadIngredientesExtra = UtilidadesConsola.leerEntero();
@@ -68,4 +80,43 @@ public class Menu {
                 System.out.println("La operacion no se pudo completar, intente nuevamente...");
         }
     }
+    
+    private void Opcion2() {
+    try {
+        String[] vector= new String[4];
+        vector[0]="–ORBInitialHost";
+        vector[1]="localhost";
+        vector[2]="-ORBInitialPort";
+        vector[3]="2022";
+        
+        System.out.println("Ingrese su nombre: ");
+        String usuario = UtilidadesConsola.leerCadena();
+
+        ORB orb = ORB.init(vector, null);
+
+        POA rootpoa = POAHelper.narrow(orb.resolve_initial_references("RootPOA"));
+        rootpoa.the_POAManager().activate();
+
+        org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
+        NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
+
+        String name = "ServidorChat";
+        ServidorInt svrchat = ServidorIntHelper.narrow(ncRef.resolve_str(name));
+
+        GUIClienteChat objGUICliente = new GUIClienteChat(svrchat, usuario);
+        ClienteImpl clienteCallbackImpl = new ClienteImpl(objGUICliente);
+
+        org.omg.CORBA.Object ref = rootpoa.servant_to_reference(clienteCallbackImpl);
+        ClienteInt objcllbck = ClienteIntHelper.narrow(ref);
+   
+        objGUICliente.asociarObjetoRemoto(objcllbck);
+        objGUICliente.setVisible(true);
+
+        svrchat.registrarCliente(objcllbck, usuario);
+        objGUICliente.setVisible(true);
+    } catch(Exception e) {
+        System.out.println("ERROR : " + e);
+        e.printStackTrace(System.out);
+    }
+}
 }
