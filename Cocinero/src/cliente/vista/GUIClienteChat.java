@@ -29,8 +29,6 @@ public class GUIClienteChat extends javax.swing.JFrame {
         this.jlabelclienteChat.setText(nombre);
         jtextareachat.setEditable(false);
         jtextareacontacto.setEditable(false);
-        jtextareacalificacionpromedio.setEditable(false);
-        jtextareaapreciacion.setEditable(false);
         fijarContacto(nombre);
     }
         
@@ -62,14 +60,6 @@ public class GUIClienteChat extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jtextareacontacto = new javax.swing.JTextArea();
         jLabelUsuariosConectados = new javax.swing.JLabel();
-        jLabelCalificarAtencion = new javax.swing.JLabel();
-        jtextareacalificacion = new javax.swing.JTextField();
-        jLabelInstrucciones = new javax.swing.JLabel();
-        jLabelAtencionPromedio = new javax.swing.JLabel();
-        jtextareacalificacionpromedio = new javax.swing.JTextField();
-        jtextareaapreciacion = new javax.swing.JTextField();
-        ButtonEnviarCalificacion = new javax.swing.JButton();
-        jButtonCalcularPromedio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -181,125 +171,31 @@ public class GUIClienteChat extends javax.swing.JFrame {
         jLabelUsuariosConectados.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabelUsuariosConectados.setText("Usuarios conectados");
 
-        jLabelCalificarAtencion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabelCalificarAtencion.setText("Calificar Atención ");
-
-        jtextareacalificacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtextareacalificacionActionPerformed(evt);
-            }
-        });
-        jtextareacalificacion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jtextareacalificacionKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jtextareacalificacionKeyTyped(evt);
-            }
-        });
-
-        jLabelInstrucciones.setText("Ingrese un numero entre el 0 y el 5, donde 0 es pésimo y 5 es excelente");
-
-        jLabelAtencionPromedio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabelAtencionPromedio.setText("Atencion Promedio:");
-
-        jtextareacalificacionpromedio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jtextareacalificacionpromedio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtextareacalificacionpromedioActionPerformed(evt);
-            }
-        });
-
-        jtextareaapreciacion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jtextareaapreciacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtextareaapreciacionActionPerformed(evt);
-            }
-        });
-
-        ButtonEnviarCalificacion.setText("Enviar");
-        ButtonEnviarCalificacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ButtonEnviarCalificacionActionPerformed(evt);
-            }
-        });
-
-        jButtonCalcularPromedio.setText("Calcular Promedio Atencion");
-        jButtonCalcularPromedio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCalcularPromedioActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelUsuariosConectados)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabelCalificarAtencion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(97, 97, 97))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(128, 128, 128)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jtextareaapreciacion, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel3Layout.createSequentialGroup()
-                                            .addGap(6, 6, 6)
-                                            .addComponent(jButtonCalcularPromedio))
-                                        .addComponent(ButtonEnviarCalificacion)))
-                                .addContainerGap(68, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelInstrucciones)
-                        .addContainerGap())
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelAtencionPromedio)
-                            .addComponent(jtextareacalificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtextareacalificacionpromedio, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelUsuariosConectados))
+                .addGap(145, 145, 145))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelCalificarAtencion, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelUsuariosConectados))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabelInstrucciones, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jtextareacalificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(ButtonEnviarCalificacion)
-                                .addGap(14, 14, 14)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabelAtencionPromedio)
-                                    .addComponent(jButtonCalcularPromedio))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jtextareacalificacionpromedio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtextareaapreciacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 29, Short.MAX_VALUE))
-                            .addComponent(jScrollPane2))
-                        .addGap(10, 10, 10)))
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabelUsuariosConectados)
+                        .addGap(11, 11, 11)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                        .addGap(11, 11, 11)))
                 .addContainerGap())
         );
 
@@ -321,52 +217,6 @@ public class GUIClienteChat extends javax.swing.JFrame {
     private void jtextareamsgKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtextareamsgKeyPressed
         //jbuttonenviar.setEnabled(true);  
     }//GEN-LAST:event_jtextareamsgKeyPressed
-
-    private void jtextareacalificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextareacalificacionActionPerformed
-        ButtonEnviarCalificacion.setEnabled(true);
-    }//GEN-LAST:event_jtextareacalificacionActionPerformed
-
-    private void jtextareacalificacionpromedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextareacalificacionpromedioActionPerformed
-        //jtextareacalificacionpromedio.setEditable(false);
-    }//GEN-LAST:event_jtextareacalificacionpromedioActionPerformed
-
-    private void jtextareaapreciacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextareaapreciacionActionPerformed
-        //jtextareaapreciacion.setEditable(false);
-    }//GEN-LAST:event_jtextareaapreciacionActionPerformed
-
-    private void ButtonEnviarCalificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEnviarCalificacionActionPerformed
-        svrchat.calificarAtencion(nombre, Float.parseFloat(jtextareacalificacion.getText()));
-        this.ButtonEnviarCalificacion.setEnabled(false);
-        jtextareacalificacion.setEditable(false);
-    }//GEN-LAST:event_ButtonEnviarCalificacionActionPerformed
-
-    private void jButtonCalcularPromedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCalcularPromedioActionPerformed
-        jtextareacalificacionpromedio.setText(String.valueOf(svrchat.obtenerPromedioCalificaciones()));
-        jtextareaapreciacion.setText(svrchat.obtenerApreciacion());
-    }//GEN-LAST:event_jButtonCalcularPromedioActionPerformed
-
-    private void jtextareacalificacionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtextareacalificacionKeyPressed
-        //jbuttonenviar.setEnabled(true);  
-    }//GEN-LAST:event_jtextareacalificacionKeyPressed
-
-    private void jtextareacalificacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtextareacalificacionKeyTyped
-
-    char c = evt.getKeyChar();
-
-    if (!Character.isDigit(c) && c != '.') {
-        evt.consume(); 
-        return;
-    }
-
-    if (c == '.' && jtextareacalificacion.getText().isEmpty()) {
-        evt.consume(); 
-        return;
-    }
-
-    if (c == '.' && jtextareacalificacion.getText().contains(".")) {
-        evt.consume();
-    }
-    }//GEN-LAST:event_jtextareacalificacionKeyTyped
 
     public void fijarTexto(String nombreUsuario,String msg) {
         System.out.println("Invocando fijarTexto()...");
@@ -398,11 +248,6 @@ public class GUIClienteChat extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ButtonEnviarCalificacion;
-    private javax.swing.JButton jButtonCalcularPromedio;
-    private javax.swing.JLabel jLabelAtencionPromedio;
-    private javax.swing.JLabel jLabelCalificarAtencion;
-    private javax.swing.JLabel jLabelInstrucciones;
     private javax.swing.JLabel jLabelNombreUsuario;
     private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JLabel jLabelUsuariosConectados;
@@ -414,9 +259,6 @@ public class GUIClienteChat extends javax.swing.JFrame {
     private javax.swing.JButton jbuttonenviar;
     private javax.swing.JButton jbuttonsalir;
     private javax.swing.JLabel jlabelclienteChat;
-    private javax.swing.JTextField jtextareaapreciacion;
-    private javax.swing.JTextField jtextareacalificacion;
-    private javax.swing.JTextField jtextareacalificacionpromedio;
     private javax.swing.JTextArea jtextareachat;
     private javax.swing.JTextArea jtextareacontacto;
     private javax.swing.JTextField jtextareamsg;
