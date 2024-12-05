@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Cliente/Cliente.iml" filepath="$PROJECT_DIR$/Cliente/Cliente.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Cocinero/Cocinero.iml" filepath="$PROJECT_DIR$/Cocinero/Cocinero.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Servidor/Servidor.iml" filepath="$PROJECT_DIR$/Servidor/Servidor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ServidorDisplay/ServidorDisplay.iml" filepath="$PROJECT_DIR$/ServidorDisplay/ServidorDisplay.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/lsd_rmi_codigo_fuente_BastidasV_TroyanoA.iml" filepath="$PROJECT_DIR$/.idea/lsd_rmi_codigo_fuente_BastidasV_TroyanoA.iml" />
+    </modules>
+  </component>
+</project>

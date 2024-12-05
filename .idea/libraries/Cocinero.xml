@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Cocinero">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Cocinero/dist/Cocinero.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
