@@ -51,7 +51,14 @@ public class ServidorImpl extends ServidorIntPOA {
 
     @Override
     public DatosCliente[] obtenerUsuariosConectados() {
-        return (DatosCliente[]) this.clientes.toArray();
+        List<DatosCliente> listaDatosClientes = new ArrayList<>();
+        for(ClienteInt cliente : clientes){
+            String nombreCliente = cliente.obtenerUsuario();
+            DatosCliente datos = new DatosCliente(nombreCliente);
+            listaDatosClientes.add(datos);
+        }
+        
+        return listaDatosClientes.toArray(new DatosCliente[0]);
     }
 
     @Override

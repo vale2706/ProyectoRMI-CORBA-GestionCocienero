@@ -2,7 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package cliente;
+package cliente.vista;
+
 
 import org.omg.CORBA.ORB;
 import org.omg.CosNaming.NamingContextExt;
